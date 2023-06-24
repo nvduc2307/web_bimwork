@@ -1,0 +1,29 @@
+<%- include('../includes/head')%>
+<div class="container">
+    <main class="create-user">
+        <form action="/admin/create-user" method="post">
+            <div class="form-group">
+                <label for="email" class="form-label">email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="your email">
+            </div>
+            <div class="form-group">
+                <label for="username" class="form-label">username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="your username">
+            </div>
+            <div class="form-group">
+                <label for="avatar" class="form-label">avatar</label>
+                <input type="file" role="img" class="form-control" id="avatar" name="avatar" placeholder="your avatar">
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="your password">
+            </div>
+            <div class="form-group">
+                <label for="confirm password" class="form-label">confirm password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="your confirm password">
+            </div>
+            <button class="btn btn-primary btn-create-user">create user</button>
+        </form>
+    </main>
+</div>
+<%- include('../includes/end')%>

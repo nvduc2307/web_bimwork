@@ -1,0 +1,44 @@
+.register {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    margin:  auto;
+    &_title {
+        text-transform: capitalize;
+    }
+    &_input {
+        margin-top: 10px;
+    }
+    &_sex {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .label-gender { 
+            cursor: pointer;
+            margin-right: 10px;
+            text-transform: capitalize;
+        }
+        input {
+            cursor: pointer;
+        }
+    }
+    &_proxy {
+        margin-top: 10px;
+        input {
+            cursor: pointer;
+        }
+        label {
+            cursor: pointer;
+        }
+    }
+    &_existed {
+        margin-top: 10px;
+    }
+    &_link {
+        text-decoration: none;
+    }
+    &_btn {
+        width: 100%;
+    }
+}

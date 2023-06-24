@@ -1,0 +1,9 @@
+.pagination {
+    margin-top: 20px;
+    justify-content: center;
+    &_link{
+        text-transform: capitalize;
+        text-decoration: none;
+        padding: 0 5px 0 5px;
+    }
+}

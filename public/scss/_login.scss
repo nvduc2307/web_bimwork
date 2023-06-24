@@ -1,0 +1,23 @@
+.login {
+    width: 400px;
+    margin: auto;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    &_title {
+        text-transform: capitalize;
+    }
+    &_link {
+        text-decoration: none;
+        text-transform: capitalize;
+        margin-top: 10px;
+    }
+    &_input {
+        margin-top: 10px;
+    }
+    &_btn {
+        width: 100%;
+    }
+    
+}

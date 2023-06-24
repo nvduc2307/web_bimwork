@@ -1,0 +1,58 @@
+.login {
+  width: 400px;
+  margin: auto;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%; }
+  .login_title {
+    text-transform: capitalize; }
+  .login_link {
+    text-decoration: none;
+    text-transform: capitalize;
+    margin-top: 10px; }
+  .login_input {
+    margin-top: 10px; }
+  .login_btn {
+    width: 100%; }
+
+.register {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  margin: auto; }
+  .register_title {
+    text-transform: capitalize; }
+  .register_input {
+    margin-top: 10px; }
+  .register_sex {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+    .register_sex .label-gender {
+      cursor: pointer;
+      margin-right: 10px;
+      text-transform: capitalize; }
+    .register_sex input {
+      cursor: pointer; }
+  .register_proxy {
+    margin-top: 10px; }
+    .register_proxy input {
+      cursor: pointer; }
+    .register_proxy label {
+      cursor: pointer; }
+  .register_existed {
+    margin-top: 10px; }
+  .register_link {
+    text-decoration: none; }
+  .register_btn {
+    width: 100%; }
+
+.pagination {
+  margin-top: 20px;
+  justify-content: center; }
+  .pagination_link {
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 0 5px 0 5px; }
