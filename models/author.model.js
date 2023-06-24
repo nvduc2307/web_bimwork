@@ -2,45 +2,45 @@ let mongoose = require('mongoose');
 let validator = require('validator')
 
 let authorSchema = mongoose.Schema({
-    name :{
-        type : String,
-        required : [true, "Please tell us your name !!"]
+    fullname: {
+        type: String,
+        require: [true, 'fullname is provinded'],
     },
-    age : {
-        type : Number
+    age: {
+        type: Number,
     },
-    gender : {
-        type :  String,
-        enum : ['male', 'female'],
-        
+    gender: {
+        type: String,
+        enum: ['male', 'female'],
+        default: 'male',
     },
-    email : {
-        type   : String,
-        required : [true, "Please provide me your email!"],
-        unique : true,
-        lowercase : true,
-        validate : [validator.isEmail, 'Please provide a valid email !']
+    email: {
+        type: String,
+        require: [true, 'email is provinded'],
+        validate: [validator.isEmail, 'must be email type'],
     },
-    username : {
-        type :String,
-        required : [true , 'User must have a username']
+    username: {
+        type: String,
+        require: [true, 'username is provinded'],
     },
-    password : {
-        type : String,
-        required : [true, 'User must have a password !' ],
+    hashPassword: {
+        type: String,
+        require: [true, 'password is provinded'],
     },
-    photo : {
-        type : String,
-        default: '/upload/default_avatar.jpg'
+    address: {
+        type: String,
     },
-    address : {
-        type : String
+    photo: {
+        type: String,
+        default: '/uploads/default.jpg'
     },
-    role : {
-        type : String ,
-        enum : ['admin', 'editor', 'author', 'guest'],
-        default : 'guest'
+    role: {
+        type: String,
+        enum: ['admin', 'editor', 'author', 'guest'],
+        default: 'guest',
     },
-
+    refreshToken: {
+        Type: String,
+    }
 });
 module.exports = mongoose.model('Author', authorSchema);
