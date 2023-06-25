@@ -1,5 +1,6 @@
 function Validator(options) {
     var formValidate = document.querySelector(options.form);
+    const btnRegister = formValidate.querySelector(options.btnSubmit);
     var selectorRules = {};
     function Validate(inputElement, rule){
         var parentElement = inputElement.parentElement;
@@ -15,9 +16,11 @@ function Validator(options) {
         if (errorMessage) {
             errorElement.textContent = errorMessage;
             parentElement.classList.add('invalid');
+            btnRegister.classList.add('disabled');
         } else{
             errorElement.textContent = '';
             parentElement.classList.remove('invalid');
+            btnRegister.classList.remove('disabled');
         }
     }
     options.rules.forEach(rule => {

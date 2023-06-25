@@ -2,9 +2,9 @@ window.addEventListener('DOMContentLoaded', function(event) {
     const registerProxyCheckbox = document.querySelector('#register_proxy-check');
     const btnRegister = document.querySelector('.register_btn');
     const registerInputs = [...$('.register_input')];
-
     Validator({
         form: '#form-register',
+        btnSubmit: '.register_btn',
         errorParam: '.register_error',
         rules: [
             Validator.isRequire('#fullname', 'Please fill in the field!'),
