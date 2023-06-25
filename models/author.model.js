@@ -1,7 +1,8 @@
 let mongoose = require('mongoose');
 let validator = require('validator')
-
-let authorSchema = mongoose.Schema({
+const { Schema } = mongoose;
+const mongooseDelete = require('mongoose-delete');
+let authorSchema = new Schema({
     fullname: {
         type: String,
         require: [true, 'fullname is provinded'],
@@ -42,5 +43,12 @@ let authorSchema = mongoose.Schema({
     refreshToken: {
         Type: String,
     }
+},{
+    timestamps: true,
+});
+authorSchema.plugin(mongooseDelete,{
+    deleted: true,
+    deletedAt: true,
+    overrideMethods: 'all',
 });
 module.exports = mongoose.model('Author', authorSchema);

@@ -1,5 +1,39 @@
 <%- include('../includes/header')%>
 <div class="container">
-    <h1>users page</h1>
+    <h1 class="mt-4">List Users</h1>
+    <a href="/admin/users/trash">goto trash <span>(<%= countUserDeleted%>)</span></a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">full name</th>
+            <th scope="col">user name</th>
+            <th scope="col">email</th>
+            <th scope="col">gender</th>
+            <th scope="col" colspan="2">address</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%if(users.length>0){%>
+                <%users.forEach(user => {%>
+                    <tr>
+                      <td><%= user.fullname%></td>
+                      <td><%= user.username%></td>
+                      <td><%= user.email%></td>
+                      <td><%= user.gender%></td>
+                      <td><%= user.address%></td>
+                      <td>
+                        <a href="/admin/users/<%=user._id%>" data-id="<%= user._id%>" class="btn btn-primary btn-user-edit">edit</a>
+                        <a href="" data-id="<%= user._id%>" class="btn btn-danger btn-user-delete">delete</a>
+                    </td>
+                    </tr>
+                <%})%>
+            <%}else{%>
+                <tr class="text-center">
+                    <td colspan="5"> is empty!</td>
+                </tr>
+            <%}%>
+        </tbody>
+      </table>
 </div>
+<form name="form-users-user-submit" method="post"></form>
 <%- include('../includes/footer')%>
