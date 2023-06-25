@@ -6,7 +6,7 @@ module.exports.requireAuth = (req, res, next) => {
     }
     try {
         var decoded = jwt.verify(userToken, process.env.ACCESS_TOKEN_SECRET);
-        req.user = decoded;
+        res.locals.user = decoded._doc;
         next();
       } catch(err) {
         console.log(err);

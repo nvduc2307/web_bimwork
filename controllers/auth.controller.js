@@ -69,7 +69,7 @@ class AuthController {
                 res.cookie('userToken', tokens.accessToken, {
                     signed: true,
                 });
-                res.redirect('/');
+                res.redirect('/admin');
             }
         });
     }
