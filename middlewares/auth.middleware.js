@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 module.exports.requireAuth = (req, res, next) => {
     var userToken =  req.signedCookies.userToken;
     if(!userToken) { 
