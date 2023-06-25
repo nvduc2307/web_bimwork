@@ -1,5 +1,7 @@
 const User = require('../models/author.model');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const genarateToken = require('../utils/genarateToken');
 class AuthController {
     //[GET] /auth/register
     getRegister(req, res, next) {
@@ -29,10 +31,46 @@ class AuthController {
             });
         });
     }
+    //[GET] /auth/login
     getLogin(req, res, next) {
         res.render('auth/login',{
             pageTitle: 'Login',
             userInfo: null,
+        });
+    }
+    //[POST] /auth/login
+    async postLogin(req, res, next) {
+        var user = await User.findOne({email: req.body.email});
+        if(!user) {
+            res.render('auth/login',{
+                pageTitle: 'Login',
+                userInfo: req.body,
+            });
+            return;
+        }
+        bcrypt.compare(req.body.password, user.hashPassword, function(err, result) {
+            if(err){
+                res.render('auth/login',{
+                    pageTitle: 'Login',
+                    userInfo: req.body,
+                });
+                return;
+            } 
+            else
+            {
+                if(!result){
+                    res.render('auth/login',{
+                        pageTitle: 'Login',
+                        userInfo: req.body,
+                    });
+                    return;
+                }
+                var tokens = genarateToken(user);
+                res.cookie('userToken', tokens.accessToken, {
+                    signed: true,
+                });
+                res.redirect('/');
+            }
         });
     }
 }
