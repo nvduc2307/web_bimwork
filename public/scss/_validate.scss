@@ -1,0 +1,11 @@
+.invalid {
+    color: $color-danger;
+    input {
+        border-color: $color-danger;
+        -webkit-text-fill-color: $color-danger;
+        box-shadow: 2px 2px 2px 2px rgba($color-danger, 0.1);
+    }
+    label {
+        font-size: 14px;
+    }
+}
