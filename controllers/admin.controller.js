@@ -11,5 +11,14 @@ class AdminController {
             path: '/admin/users',
         });
     }
+    //[GET] /admin/user/:id/edit
+    async getEditUser(req, res, next) {
+        var user = await User.findOne({_id: req.params.id});
+        res.render('admin/users/user-edit', {
+            pageTitle: 'Edit User',
+            user: user,
+            path: '/admin/users',
+        });
+    }
 }
 module.exports = new AdminController;

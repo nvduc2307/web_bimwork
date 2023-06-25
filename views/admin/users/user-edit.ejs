@@ -1,0 +1,43 @@
+<%- include('../includes/header')%>
+<div class="container">
+    <h1 class="mt-4">edit user info</h1>
+    <form name="form-submit" action="/admin/users/<%= user._id%>/update" method="post">
+        <div class="form-wrap row">
+            <div class="form-group col col-lg-6">
+                <label for="fullname" class="form-label">full name:</label>
+                <input type="text" class="form-control form-input" id="fullname" name="fullname" value="<%= user.fullname%>" placeholder="Full Name">
+            </div>
+            <div class="form-group  col col-lg-6">
+                <label for="username" class="form-label">user name:</label>
+                <input type="text" class="form-control form-input" id="username" name="username" value="<%= user.username%>" placeholder="User Name">
+            </div>
+            <div class="form-group  col col-lg-6">
+                <label for="email" class="form-label">email:</label>
+                <input type="text" class="form-control form-input" id="email" name="email" value="<%= user.email%>" placeholder="Email">
+            </div>
+            <div class="form-group  col col-lg-6">
+                <label for="age" class="form-label">age:</label>
+                <input type="number" class="form-control form-input" id="age" name="age" value="<%= user.age%>" placeholder="Age">
+            </div>
+            <div class="form-group  col col-lg-6">
+                <label for="address" class="form-label">address:</label>
+                <input type="text" class="form-control form-input" id="address" name="address" value="<%= user.address%>" placeholder="Address">
+            </div>
+            <div class="form-group  col col-lg-6">
+                <label for="avatar" class="form-label">avatar:</label>
+                <input type="file" class="form-control form-input" id="avatar" name="avatar" value="<%= user.photo%>" placeholder="Avatar">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="role" class="form-label">role:</label>
+            <select name="role" id="role">
+                <option value="admin">admin</option>
+                <option value="editor">editor</option>
+                <option value="author">author</option>
+                <option value="guest">guest</option>
+            </select>
+        </div>
+        <button class="btn btn-primary">update</button>
+    </form>
+</div>
+<%- include('../includes/footer')%>
