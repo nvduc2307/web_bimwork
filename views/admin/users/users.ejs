@@ -5,6 +5,7 @@
     <table class="table">
         <thead>
           <tr>
+            <th scope="col">photo</th>
             <th scope="col">full name</th>
             <th scope="col">user name</th>
             <th scope="col">email</th>
@@ -16,6 +17,9 @@
             <%if(users.length>0){%>
                 <%users.forEach(user => {%>
                     <tr>
+                      <td>
+                        <img width="30" height="30" src="<%= user.photo%>" alt="<%= user.username%>">
+                      </td>
                       <td><%= user.fullname%></td>
                       <td><%= user.username%></td>
                       <td><%= user.email%></td>
@@ -29,11 +33,12 @@
                 <%})%>
             <%}else{%>
                 <tr class="text-center">
-                    <td colspan="5"> is empty!</td>
+                    <td colspan="6"> is empty!</td>
                 </tr>
             <%}%>
         </tbody>
       </table>
 </div>
-<form name="form-users-user-submit" method="post"></form>
+<form id="form-users-user-submit" name="form-users-user-submit" method="post"></form>
+<script src="/js/form-submit-delete.js"></script>
 <%- include('../includes/footer')%>

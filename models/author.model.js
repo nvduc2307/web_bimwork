@@ -33,7 +33,7 @@ let authorSchema = new Schema({
     },
     photo: {
         type: String,
-        default: '/uploads/default.jpg'
+        default: '/uploads/default.jpeg'
     },
     role: {
         type: String,
