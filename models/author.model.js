@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 let validator = require('validator')
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 const mongooseDelete = require('mongoose-delete');
 let authorSchema = new Schema({
     fullname: {
@@ -46,8 +46,7 @@ let authorSchema = new Schema({
 },{
     timestamps: true,
 });
-authorSchema.plugin(mongooseDelete,{
-    deleted: true,
+authorSchema.plugin( mongooseDelete ,{
     deletedAt: true,
     overrideMethods: 'all',
 });

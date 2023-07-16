@@ -2,14 +2,18 @@ const User = require('../models/author.model');
 class AdminController {
     //[GET] /admin/users
     async getUsers(req, res, next) {
-        const countUserDeleted = await User.countDeleted();
-        const users = await User.find({});
-        res.render('admin/users/users', {
-            pageTitle: 'Users',
-            users: users,
-            countUserDeleted: countUserDeleted,
-            path: '/admin/users',
-        });
+        try {
+            const countUserDeleted = await User.countDocumentsDeleted();
+            const users = await User.find({});
+            res.render('admin/users/users', {
+                pageTitle: 'Users',
+                users: users,
+                countUserDeleted: countUserDeleted,
+                path: '/admin/users',
+            });
+        } catch (error) {
+            
+        }
     }
     //[GET] /admin/users/:id/edit
     async getEditUser(req, res, next) {
@@ -30,11 +34,39 @@ class AdminController {
     }
     //[DELETE] /admin/users/:id/delete
     async deleteUser(req, res, next) {
-        var userDelete = await User.findOne({_id: req.params.id});
-        if(userDelete) {
-            await userDelete.delete();
+        try {
+            await User.delete({_id: req.params.id});
+            res.redirect('back');
+        } catch (error) {
+            
         }
-       res.redirect('back');
+    }
+    //[GET] /admin/users/trash
+    async getUserTrash(req, res, next) {
+        const users = await User.findDeleted({});
+        res.render('admin/users/trash', {
+            pageTitle: 'Trash Users',
+            users: users,
+            path: '/admin/users',
+        });
+    }
+    //[PUT] /admin/users/:id/restore
+    async putUserRestore(req, res, next) {
+        try {
+            await User.restore({_id: req.params.id});
+        } catch (err) {
+            
+        }
+        res.redirect('/admin');
+    }
+    //[DELETE] /admin/users/:id/destroy
+    async destroyUser(req, res, next) {
+        try {
+            await User.deleteOne({_id: req.params.id});
+        } catch (err) {
+            
+        }
+        res.redirect('/admin');
     }
 }
 module.exports = new AdminController;
