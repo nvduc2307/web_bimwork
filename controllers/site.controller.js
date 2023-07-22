@@ -1,7 +1,24 @@
+const Project = require('../models/project.model');
+const Post = require('../models/post.model');
+const Tag = require('../models/tag.model');
 class SiteController {
     //[GET] /index
-    index(req, res, next) {
-        res.render('index');
+    async index(req, res, next) {
+        try {
+            const projects = await Project.find({})
+            .skip(0)
+            .limit(6);
+            const posts = await Post.find({})
+            .populate('tags')
+            .skip(0)
+            .limit(2);
+            res.render('index', {
+                projects: projects,
+                posts: posts,
+            });
+        } catch (error) {
+            
+        }
     }
     //[Get] /about-us
     getAboutUs(req, res, next) {

@@ -5,32 +5,22 @@ const postSchema = new Schema({
         type: String,
         required: [true, 'The post must have title']
     },
-    expert: {
+    description: {
         type: String,
+        required: [true]
     },
     tags: {
-        type: [],
-    },
-    feature: {
-        type: String,
-    },
-    category: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Category',
-    },
-    type: {
-        type: String,
-        enum: ['Project', 'Article']
+        type: [
+            {type: Schema.Types.ObjectId, ref: 'Tag'}
+        ],
     },
     authorId: {
         type: mongoose.Types.ObjectId,
         ref: 'Author'
     },
-    url: {
+    image: {
         type: String,
-    },
-    body: {
-        type: String,
+        required: [true]
     }
 }, {
     timestamps: true,

@@ -5,7 +5,7 @@ const mongooseDelete = require('mongoose-delete');
 let authorSchema = new Schema({
     fullname: {
         type: String,
-        require: [true, 'fullname is provinded'],
+        required: [true, 'fullname is provinded'],
     },
     age: {
         type: Number,
@@ -17,7 +17,7 @@ let authorSchema = new Schema({
     },
     email: {
         type: String,
-        require: [true, 'email is provinded'],
+        required: [true, 'email is provinded'],
         validate: [validator.isEmail, 'must be email type'],
     },
     username: {
@@ -26,7 +26,7 @@ let authorSchema = new Schema({
     },
     hashPassword: {
         type: String,
-        require: [true, 'password is provinded'],
+        required: [true, 'password is provinded'],
     },
     address: {
         type: String,
