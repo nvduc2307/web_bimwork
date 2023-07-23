@@ -1,6 +1,7 @@
 const Project = require('../models/project.model');
 const Post = require('../models/post.model');
 const Tag = require('../models/tag.model');
+const Category = require('../models/category.model');
 class SiteController {
     //[GET] /index
     async index(req, res, next) {
@@ -41,8 +42,22 @@ class SiteController {
         res.render('price');
     }
     //[GET] /project-list
-    getProjectList(req, res, next) {
-        res.render('project-list');
+    async getProjectList(req, res, next) {
+        try {
+            const category = req.query.category;
+            const projects = await Project.find({})
+                .populate('categoryId');
+            const prods = projects
+            .filter(project => project.categoryId?.name === 'thiet ke')
+            .slice(0, 9);
+            res.render('project-list', {
+                projects: prods,
+                category: category,
+                path: '/project-list'
+            });
+        } catch (error) {
+            
+        }
     }
     //[GET] /project-detail
     getProjectDetail(req, res, next) {

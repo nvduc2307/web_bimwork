@@ -9,13 +9,13 @@
                 <div class="container">
                     <h2 class="page-title__name">Danh sách dự án</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb__item"><a href="./index.html" class="breadcrumb__link">Trang chủ</a></li>
+                        <li class="breadcrumb__item"><a href="/" class="breadcrumb__link">Trang chủ</a></li>
                         <li class="breadcrumb__item">Thiết kế</li>
                     </ul>
                 </div>
             </div>
             <div class="page-title__bg" data-top="top[inverted]:50%;" data-top-bottom="top:0%;">
-                <img src="./img/bg_title_project.jpg" alt="">
+                <img src="/img/bg_title_project.jpg" alt="">
             </div>
         </section>
         <!-- // Page title -->
@@ -28,16 +28,24 @@
                     <div class="navtab js-navtab">
                         <ul class="navtab__list">
                             <li class="navtab__item">
-                                <a href="#none" class="navtab__link navtab__link--arrow btn btn--white on"><span class="navtab__link-text">THIẾT KẾ</span></a>
+                                <a href="/project-list?category=design&page=1" class="navtab__link navtab__link--arrow btn btn--white <%= category === 'design' ? ' on' : '' %>">
+                                    <span class="navtab__link-text">THIẾT KẾ</span>
+                                </a>
                                 <ul class="navtab__list-depth2">
-                                    <li class="navtab__item-depth2"><a href="#none" class="navtab__link-depth2">Nhà phố</a></li>
+                                    <li class="navtab__item-depth2 active"><a href="#none" class="navtab__link-depth2">Nhà phố</a></li>
                                     <li class="navtab__item-depth2"><a href="#none" class="navtab__link-depth2">Biệt thự</a></li>
                                     <li class="navtab__item-depth2"><a href="#none" class="navtab__link-depth2">Nhà xưởng</a></li>
                                 </ul>
                             </li>
-                            <li class="navtab__item"><a href="#none" class="navtab__link btn btn--white"><span class="navtab__link-text">NỘI THẤT</span></a></li>
                             <li class="navtab__item">
-                                <a href="#none" class="navtab__link navtab__link--arrow btn btn--white"><span class="navtab__link-text">THI CÔNG</span></a>
+                                <a href="/project-list?category=interior&page=1" class="navtab__link btn btn--white <%= category === 'interior' ? ' on' : '' %>">
+                                    <span class="navtab__link-text">NỘI THẤT</span>
+                                </a>
+                            </li>
+                            <li class="navtab__item">
+                                <a href="/project-list?category=construction&page=1" class="navtab__link navtab__link--arrow btn btn--white <%= category === 'construction' ? ' on' : '' %>">
+                                    <span class="navtab__link-text">THI CÔNG</span>
+                                </a>
                                 <ul class="navtab__list-depth2">
                                     <li class="navtab__item-depth2"><a href="#none" class="navtab__link-depth2">Xây mới</a></li>
                                     <li class="navtab__item-depth2"><a href="#none" class="navtab__link-depth2">Sửa chữa và cải tạo</a></li>
@@ -52,7 +60,7 @@
                                             <div class="col-12 project__item">
                                                 <!-- Project box -->
                                                 <div class="project-box project-box--spotlight">
-                                                    <a href="./project-detail.html" class="project-box__link">
+                                                    <a href="/project-detail" class="project-box__link">
                                                         <div class="project-box__content">
                                                             <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án nổi bật</strong>
                                                             <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
@@ -63,132 +71,25 @@
                                                 </div>
                                                 <!-- // Project box -->
                                             </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 02</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
+                                            <%if(projects.length > 0){%>
+                                                <%projects.forEach(project=>{%>
+                                                    <div class="col-4 project__item">
+                                                        <!-- Project box -->
+                                                        <div class="project-box">
+                                                            <a href="/project-detail" data-id="<%= project._id%>" class="project-box__link">
+                                                                <div class="project-box__content">
+                                                                    <strong class="project-box__name text-ellipsis text-ellipsis--2line"><%=project.name %></strong>
+                                                                    <p class="project-box__description text-ellipsis text-ellipsis--2line"><%=project.description %></p>
+                                                                    <span class="project-box__btn-viewmore">Xem thêm</span>
+                                                                </div>
+                                                                <div class="project-box__img"><img src="<%=project.image%>" alt="<%=project.name%>"></div>
+                                                            </a>
                                                         </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 03</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project_02.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 04</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project_03.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 05</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project_02.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 06</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project_03.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 07</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 08</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project_02.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 09</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project_03.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
-                                            <div class="col-4 project__item">
-                                                <!-- Project box -->
-                                                <div class="project-box">
-                                                    <a href="./project-detail.html" class="project-box__link">
-                                                        <div class="project-box__content">
-                                                            <strong class="project-box__name text-ellipsis text-ellipsis--2line">Dự án 10</strong>
-                                                            <p class="project-box__description text-ellipsis text-ellipsis--2line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, praesentium minus ipsam saepe explicabo dolorem voluptatem! Veritatis eos, officia numquam quo nobis vitae doloribus atque quidem itaque ratione a facere!</p>
-                                                            <span class="project-box__btn-viewmore">Xem thêm</span>
-                                                        </div>
-                                                        <div class="project-box__img"><img src="img/projects/img_thumbnai_project.jpg" alt=""></div>
-                                                    </a>
-                                                </div>
-                                                <!-- // Project box -->
-                                            </div>
+                                                        <!-- // Project box -->
+                                                    </div>
+                                                <%})%>
+                                            <%}else{%>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </div>

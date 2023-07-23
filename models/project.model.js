@@ -16,8 +16,11 @@ const projectSchema = new Schema({
     staffId: {
         type: Schema.Types.ObjectId,
         req: 'Staff',
+    },
+    categoryId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
     }
-
 },{
     timestamps: true
 });
